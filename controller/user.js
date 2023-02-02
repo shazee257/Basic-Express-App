@@ -2,7 +2,8 @@ const {
     createUser,
     findUserById,
     updateUserById,
-    getAllUsers
+    getAllUsers,
+    deleteUserById
 } = require('../models/user');
 
 // create new user
@@ -58,6 +59,20 @@ exports.updateUserById = async (req, res) => {
         res.status(400).json({ message: 'User not updated' })
     }
 }
+
+// delete user by id
+exports.deleteUserById = async (req, res) => {
+    const user = await deleteUserById(req.params.userId);
+    if (user) {
+        res.status(200).json({
+            message: 'User deleted successfully',
+            data: user
+        });
+    } else {
+        res.status(400).json({ message: 'User not deleted' })
+    }
+}
+
 
 
 

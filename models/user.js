@@ -33,3 +33,9 @@ exports.getAllUsers = () => {
     const users = UserModel.find({});
     return users;
 }
+
+// delete user
+exports.deleteUserById = (_id) => {
+    const user = UserModel.findByIdAndDelete(_id);
+    return user;
+}
